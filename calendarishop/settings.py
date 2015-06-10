@@ -80,27 +80,24 @@ if DEBUG:
 
         'default':{
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ishop',
+            'NAME': 'calendarishop',
             'USER': 'postgres',
             'PASSWORD': os.environ['pass_db'],
             'HOST':'5433',
         }
     }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+else:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config()}
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-CO'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
@@ -114,5 +111,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+
+
 
 
